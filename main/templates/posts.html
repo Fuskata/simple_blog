@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    {% for post in posts %}
+        <h1 style="color:#ff00ff">{{ post.header }}</h1>
+        <h5>{{ post.when }}</h5>
+        <p>{{ post.text }}</p>
+    {% endfor %}
+</body>
+</html>
