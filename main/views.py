@@ -5,6 +5,20 @@ from main.models import Post
 from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 
+class AddPost(View):
+    def get(self, request):
+        if request.user.is_authenticated():
+       # posts = Post.objects.all()
+            return HttpResponse(render(request, 'edit_post.html', {}))
+        else:
+            return HttpResponseRedirect('/')
+
+    def post(self, request):
+        header = request.POST['header']
+        content = request.POST['content']
+        publish = 'publish' in request.POST
+        Post.objects.create(header=header, text=content)
+        return HttpResponseRedirect('/')
 
 class Posts(View):
     def get(self, request):
@@ -25,4 +39,4 @@ class Login(View):
 class Logout(View):
     def get(self, request):
         logout(request)
-        return HttpResponse('<div style="text-align: center">Su~ccess. <i><a href="http://127.0.0.1:8000/">Go back?</a></div></i>')
+        return HttpResponse('<div style="text-align: center">Su~ccess. <i><a href="http://127.0.0.1:8000/">Go back?</a><br><br><a href="http://hdwallpaperfun.com/wp-content/uploads/2014/08/Free-Pictures-Of-Cats-Wallpaper-HD.jpg">Or some cat?</a></div></i>')
