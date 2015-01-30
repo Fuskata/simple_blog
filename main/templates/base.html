@@ -11,12 +11,16 @@
 			<div class="container">
 			{% if user.is_authenticated %}
 				<h3>Hello, {{ user.username }}</h3>
-				<div style="text-align: right;">
-				<a href="/logout">Logout</a>
-				</div>
+				
+                
+                
 				<div style="text-align: left;">
-				<a href="/addpost">Add post</a>
+                <a href="/">Main page</a><br>
+                <a href="/addpost">Add post</a><br>
+                <a href="/logout">Logout</a>
 				</div>
+				
+				
 			{% else %}
 				<h2>Please log in</h2>
 				<form action="/login" method="post" role="form" class="form-inline">

@@ -40,3 +40,14 @@ class Logout(View):
     def get(self, request):
         logout(request)
         return HttpResponse('<div style="text-align: center">Su~ccess. <i><a href="http://127.0.0.1:8000/">Go back?</a><br><br><a href="http://hdwallpaperfun.com/wp-content/uploads/2014/08/Free-Pictures-Of-Cats-Wallpaper-HD.jpg">Or some cat?</a></div></i>')
+
+class SinglePost(View):
+    def get(self, request, id):
+        post = Post.objects.get(id=id)
+        return HttpResponse(render(request, 'single_post.html', {'post': post}))
+
+
+class EditPost(View):
+    def get(self, request, id):
+        post = Post.objects.get(id=id)
+        return HttpResponse(render(request, 'edit_post.html', {'post': post}))

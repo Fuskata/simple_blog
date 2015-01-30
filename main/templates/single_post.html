@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{%  block content %}
+    <section class="container">
+        <div class="jumbotron">
+            <h3 style="color:#566D7E">{{ post.header }}</h3>
+            <h5><i>{{ post.when }}</i></h5>
+            
+            <p><h4>{{ post.text|safe }}</h4></p>
+        {% if user.is_authenticated %}
+                <div style="text-align: right;">
+                    <a href="/posts/{{ post.id}}/edit/"><h5>Edit post</h5></a>
+                </div>
+            {% endif %}</div>
+    </section>
+{%  endblock content %}

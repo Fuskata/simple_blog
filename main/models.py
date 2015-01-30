@@ -4,12 +4,20 @@ BLACK_USER_LIST = ['Vasya', 'Petya']
 
 # Create your models here.
 class Post(models.Model):
-    header = models.CharField(max_length=255)
-    text = models.TextField()
-    when = models.DateTimeField(auto_now=True)
+	header = models.CharField(max_length=255)
+	text = models.TextField()
+	when = models.DateTimeField(auto_now=True)
 
-    def __unicode__(self):
-        return u'{} at {}'.format(self.header, self.when)
+	def __unicode__(self):
+	    return u'{} at {}'.format(self.header, self.when)
+
+	def shorten_post(self):
+		post_len = len(self.text)
+		if post_len > 500:
+
+			return self.text[:500]+'<font size="2.9">...<a href="/posts/{}/">read more</a></font>'.format(self.id)
+		else:
+			return self.text
 
 class User(models.Model):
 	username = models.CharField(max_length=50)
